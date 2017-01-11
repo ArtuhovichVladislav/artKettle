@@ -1,0 +1,6 @@
+		<div class="tempDialog">
+			<h2>Enter temperature value</h2>
+			<input id="tempValue" value="100" type="text">
+
+			<button id="tempButton" class="green wide"> Send </button>
+		</div>

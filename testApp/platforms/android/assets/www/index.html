@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no,
+		shrink-to-fit=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+
+	<title>ESP8266</title>
+
+	<style>
+		@import 'ui/css/evothings-app.css';
+		@import 'app.css';
+		@import 'libs/timepicker/stylesheets/wickedpicker.css';
+		@import 'libs/clockpicker/clockpicker.css';
+		@import 'libs/clockpicker/standalone.css';
+		@import 'libs/clockpicker/bootstrap-material-datetimepicker.css';
+		@import 'libs/font-awesome-4.5.0/css/font-awesome.min.css';
+		@import 'libs/MaterialIcons.css';
+		@import 'libs/Roboto.css';
+	</style>
+
+	<script>
+		// Redirect console.log to Evothings Workbench.
+		if (window.hyper && window.hyper.log) {
+			console.log = hyper.log
+		}
+	</script>
+
+	<script type="text/javascript" src="libs/material.min.js"></script>
+	<script type="text/javascript" src="libs/moment-with-locales.min.js"></script>
+	<script src="cordova.js"></script>
+	<script src="libs/jquery/jquery.js"></script>
+	<script src="libs/jquery-ui/jquery-ui.js"></script>
+	<script src="libs/evothings/evothings.js"></script>
+	<script src="libs/evothings/ui/ui.js"></script>
+	<script src="app.js"></script>
+	<script src="libs/timepicker/src/wickedpicker.js"></script>
+	<script src="libs/clockpicker/clockpicker.js"></script>
+	<script src="libs/clockpicker/bootstrap-material-datetimepicker.js"></script>
+
+</head>
+
+<body ontouchstart="">
+
+	<header>
+		<div id="back">
+			<button class="back">
+				<img src="ui/images/arrow-left.svg" />
+			</button>
+		</div>
+
+		<div class="pull-right">
+			<button id="disconnectButton" class="red pull-right"> Disconnect </button>
+		</div>
+	</header>
+	<div id="startView">
+
+		<img class="center" style="width:70%;padding: 25px 0px" src="img/icon.png">
+		<h1 class="blue" align="center">artKettle</h1>
+		<div class = "ipField" align="center">
+			<h2>Enter IP-address of the artKettle</h2>
+				<!-- <input  id="IPAddress" value="192.168.31.231" type="url">-->
+				<input  id="IPAddress" value="192.168.4.1" type="url" display="none">
+		</div>
+		<button id="connectButton" class="green wide"> Connect </button>
+
+	</div>
+
+	<div id="connectingView" style="display:none">
+		<div id="connectingIndicator">
+			<img src="img/loader.gif">
+			<p id="connectingStatus"></p>
+		</div>
+	</div>
+
+	<div id="controlView" style="display:none">
+
+		<div id="wakeUpBtn">
+			<div id="" class="wakeUpBtn">
+				<i class="fa fa-clock-o fa-2x"></i>
+			</div>
+		</div>
+
+		<div id="ledView">
+			<div id="led" class="circleBase ledOff">
+				<div class="centerSwitcher">
+					<i class="fa fa-power-off fa-4x"></i>
+				</div>
+			</div>
+		</div>
+
+		<hr>
+		<table rules="cols">
+			<tr>
+				<td>
+					<h1 align="center">Current<br> temperature (&#8451)</h1>
+					<div id="temperature">
+						<p class="tempText currentTemp">--&deg;</p>
+					</div>
+				</td>
+				<td>
+					<h1 align="center">Target<br> temperature (&#8451)</h1>
+					<div id="temperature">
+						<p class="tempText targetTemp">100&deg;</p>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+		<hr>
+		<h2 align="center">Current water capacity (cups)</h2>
+		<div id="waterCapacity">
+			<h1 class="cupsCapacity">-- <i class="fa fa-coffee"></i></h1>
+		</div>
+	</div>
+
+	<div id="temperatureView">
+		<div align="center">
+			<button id="65degBtn" class="amber tempBtn"> 65&deg;</button>
+			<button id="75degBtn" class="orange tempBtn"> 75&deg;</button>
+			<button id="85degBtn" class="deepOrange tempBtn"> 85&deg;</button>
+			<button id="100degBtn" class="red2 tempBtn"> 100&deg;</button>
+		</div>
+
+		<div align="center">
+			<h2>Enter temperature value</h2>
+			<input id="tempValue" value="100" type="text">
+		</div>
+		<button id="tempButton" class="green wide"> Set temperature </button>
+	</div>
+
+	<div id="wakeUpView" align="center">
+		<h2>Time</h2>
+		<div class="form-control-wrapper">
+			<input type="text" id="time" class="form-control floating-label" placeholder="Time">
+		</div>
+		<button id="timeButton" class="green wide"> Set wake up time </button>
+
+		<h1 id="wakeUpTime" align="center">Wake up time:</h1>
+			<h1 class="timeParagraph"></h1>
+	</div>
+
+</body>
+
+</html>
